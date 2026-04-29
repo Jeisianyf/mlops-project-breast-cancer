@@ -58,8 +58,8 @@ The project requires Python 3.12+ and the packages informed in `pyproject.toml`.
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
-cd mlops_project
+git clone https://github.com/Jeisianyf/mlops-project-breast-cancer.git
+cd mlops-project-breast-cancer
 ```
 
 2. Install dependencies:
@@ -85,7 +85,6 @@ In the `models/` directory:
 In the `artifacts/` directory:
 - `[features]_mean_imputer.joblib`: Feature imputer for missing values
 - `[features]_scaler.joblib`: Standard scaler for feature normalization
-- `[target]_one_hot_encoder.joblib`: One-hot encoder for target labels
 
 ## Metrics
 
@@ -147,13 +146,13 @@ You can instead build and run the application using Docker:
 #### Build the Docker image
 
 ```bash
-docker build -t ml-classifier .
+docker build -t ml-classifier-breast-cancer .
 ```
 
 #### Run the Docker container
 
 ```bash
-docker run -p 5001:5001 ml-classifier
+docker run -p 5001:5001 ml-classifier-breast-cancer
 ```
 
 The web application will be available at `http://localhost:5001`.
