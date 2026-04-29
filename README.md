@@ -58,7 +58,7 @@ The project requires Python 3.12+ and the packages informed in `pyproject.toml`.
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/Jeisianyf/MLOps-project-breast-cancer.git
 cd mlops_project
 ```
 
