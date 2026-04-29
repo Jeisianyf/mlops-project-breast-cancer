@@ -1,0 +1,13 @@
+.vscode/
+.venv/
+
+ml_classifier.egg-info/
+__pycache__
+
+data/**/*.csv
+
+artifacts/*.joblib
+
+models/*.keras
+
+metrics/*.json
