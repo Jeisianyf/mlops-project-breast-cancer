@@ -124,7 +124,29 @@ def train_model(train_data: pd.DataFrame, params: dict[str, int | float]) -> Non
 
     mlflow.keras.autolog()
 
-    with mlflow.start_run():
+    is_experiment_dvc = os.getenv("DVC_EXP_NAME") is not None
+    extra_args = {}
+    if is_experiment_dvc:
+        runs = mlflow.search_runs(
+            experiment_ids = [os.getenv("MLFLOW_EXPERIMENT_ID")], 
+            filter_string="tags.dvc_exp = 'True'",
+            order_by=["start_time DESC"]
+        )
+        if runs.empty:
+            with mlflow.start_run() as parent_run:
+                mlflow.set_tag("dvc_exp", True)
+                parent_run_id = parent_run.info.run_id
+        else:
+            parent_run_id = runs.iloc[0].run_id
+        
+        run_name = os.getenv("DVC_EXP_NAME")
+        extra_args = {
+            "parent_run_id": parent_run_id,
+            "run_name": run_name,
+            "nested": True
+        }
+                
+    with mlflow.start_run(**extra_args):
         mlflow.log_params(params)
         tf.keras.utils.set_random_seed(params.pop("random_seed"))
         
