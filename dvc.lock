@@ -81,21 +81,21 @@ stages:
       size: 6077
     params:
       params.yaml:
-        train.batch_size: 32
+        train.batch_size: 16
         train.dropout_rate: 0.3
         train.epochs: 100
-        train.hidden_layer_1_neurons: 64
-        train.hidden_layer_2_neurons: 32
-        train.learning_rate: 0.001
+        train.hidden_layer_1_neurons: 32
+        train.hidden_layer_2_neurons: 16
+        train.learning_rate: 0.01
     outs:
     - path: metrics/training.json
       hash: md5
-      md5: a88b21a98027ad20e4e1f0fd10867ebc
-      size: 142
+      md5: 5b5840334ba57fb8c3ffc7040b506e73
+      size: 140
     - path: models/model.keras
       hash: md5
-      md5: 9ee54b95470b9bd0c62e18ede5210a4f
-      size: 79016
+      md5: 1d5b8fc020d89ba0536012d942877fc1
+      size: 48295
   evaluate:
     cmd: python -m src.model_evaluation.evaluate_model
     deps:
@@ -105,8 +105,8 @@ stages:
       size: 85010
     - path: models/model.keras
       hash: md5
-      md5: 9ee54b95470b9bd0c62e18ede5210a4f
-      size: 79016
+      md5: 1d5b8fc020d89ba0536012d942877fc1
+      size: 48295
     - path: src/model_evaluation/evaluate_model.py
       hash: md5
       md5: 2f39ac5bbdec7ad1de5a1f0519342489
