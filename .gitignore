@@ -11,3 +11,5 @@ artifacts/*.joblib
 models/*.keras
 
 metrics/*.json
+
+mlruns/
